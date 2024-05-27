@@ -1,7 +1,19 @@
 package edu.badpals.examen;
 
+import edu.badpals.examen.domain.MagicalItem;
+import edu.badpals.examen.repository.Repositorio;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+
+import java.util.Optional;
 
 @ApplicationScoped
 public class ServiceItem {
+    @Inject
+    Repositorio repo;
+
+    public Optional<MagicalItem> getItem(String item_name){
+        return repo.loadItem(item_name);
+    }
+
 }

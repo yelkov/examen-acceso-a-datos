@@ -1,17 +1,23 @@
 package edu.badpals.examen;
 
 import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.http.ContentType;
 import jakarta.inject.Inject;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
 public class ResourceTest {
- /*
+
     @Inject
     Resource resources;
 
 
-    *//**
+    /**
 	 * Implementa una clase Resources que
 	 * añada una API REST a nuestra app.
 	 * Injecta el servicio en Resources.
@@ -19,19 +25,19 @@ public class ResourceTest {
      * Todas las peticiones http a la API REST
      * ha de pasar por el servicio antes de
      * llegar al repositorio.
-     *//*
+     */
 
     @Test
     public void test_injeccion() {
         Assertions.assertThat(resources.service).isNotNull();
     }
 
-    *//**
+    /**
      * En el endpoint
      *     /itemcrudos
      * recibimos un TEXT con el mensaje
      * "CRUD de Items!""
-     *//*
+     */
 
     @Test
     public void test_wellcome() {
@@ -44,7 +50,7 @@ public class ResourceTest {
             .body(is("CRUD de Items!"));
     }
 
-    *//**
+    /**
      * La peticion
      *     /item/{name}
      * del controlador
@@ -54,7 +60,7 @@ public class ResourceTest {
 	 * La consulta ha de redirigirse al servicio.
 	 * El servicio utiliza el repositorio
 	 * para hacer la consulta a la base de datos.
-     *//*
+     */
     @Test
     public void test_get_item() throws Exception {
 
@@ -78,7 +84,7 @@ public class ResourceTest {
             .statusCode(404);
 	}
 
-    *//**
+    /**
      * Guarda un item empleando el método POST en la url
      *    /item
      * Los parametros post necesarios, en un JSON, son:
@@ -98,8 +104,8 @@ public class ResourceTest {
 	 * La peticion ha de redirigirse al servicio.
 	 * El servicio utiliza el repositorio
 	 * para hacer la consulta a la base de datos.
-     *//*
-	@Test
+     */
+	/*@Test
     public void test_post_item() throws Exception {
 
         // El item se crea si todas sus propiedades son NO nulas ni vacias
@@ -114,15 +120,15 @@ public class ResourceTest {
             .body("name", equalTo("Resurrection Stone"),
                   "quality", equalTo(666),
                   "type", equalTo("MagicalItem"));
-    }
+    }*/
         
-    *//**
+    /**
      * Asegurate que el item no se crea 
      * si alguna de sus propiedades es nula o vacia.
      * El controlador devuelve 400 por defecto si 
      * el documento JSON no satisface la validacion.
-     *//*
-    @Test
+     */
+    /*@Test
     public void test_post_item_ko() {
 
         given()
@@ -140,9 +146,9 @@ public class ResourceTest {
             .post("/item")
         .then()
             .statusCode(400);
-    }
+    }*/
 
-     *//**
+     /**
      * La peticion
      *  /items/{name} 
      * del controlador
@@ -152,8 +158,8 @@ public class ResourceTest {
 	 * La consulta ha de redirigirse al servicio.
 	 * El servicio utiliza el repositorio
 	 * para hacer la consulta a la base de datos.
-     *//*
-    @Test
+     */
+    /*@Test
     public void test_get_items() throws Exception {
 
         // Si el item existe la respuesta es 200
@@ -176,9 +182,9 @@ public class ResourceTest {
             .get("/items/{name}")
         .then()
             .statusCode(404);
-	}
+	}*/
 
-    *//**
+    /**
      * Elimina un item empleando el método DELETE en la url
      *    /item/
      * Los parametros post necesarios, en un JSON, son:
@@ -197,9 +203,9 @@ public class ResourceTest {
 	 * La peticion ha de redirigirse al servicio.
 	 * El servicio utiliza el repositorio
 	 * para hacer la consulta a la base de datos.
-     *//*
+     */
     
-    @Test
+    /*@Test
     public void test_delete_item() {
         
         given()
@@ -210,6 +216,6 @@ public class ResourceTest {
         .then()
             .statusCode(200)
             .body("$.size()", is(2));
-    }   */
+    } */
     
 }
