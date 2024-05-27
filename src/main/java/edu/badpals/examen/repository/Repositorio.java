@@ -67,21 +67,21 @@ public class Repositorio {
         List<Order> orderList = orderRepository.listAll();
 
         Optional<Order> order = orderList.stream()
-                .filter(o -> o.getWizard().getName().equals(wizard_name))
-                .filter(o-> o.getItem().getName().equals(item_name))
+                .filter(o -> (o.getWizard().getName().equals(wizard_name))&&(o.getItem().getName().equals(item_name)))
                 .findFirst();
         return order;
     }
 
-    /*@Transactional
+   /* @Transactional
     public Optional<Order> placeOrder(String wizard_name, String item_name) {
         Optional<Wizard> wizard = loadWizard(wizard_name);
         Optional<MagicalItem> item = loadItem(item_name);
 
-        Optional<Order> order
         if(wizard.isPresent() && item.isPresent()){
-
-        }
+                Order createdOrder = new Order(wizard.get(),item.get());
+                orderRepository.persist(createdOrder);
+            }
+        return loadOrder(wizard_name,item_name);
 
 
     }*/
