@@ -3,7 +3,9 @@ package edu.badpals.examen;
 import edu.badpals.examen.domain.MagicalItem;
 import edu.badpals.examen.domain.Order;
 import edu.badpals.examen.domain.Wizard;
+import edu.badpals.examen.repository.Repositorio;
 import io.quarkus.test.junit.QuarkusTest;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.assertj.core.api.Assertions;
@@ -15,8 +17,8 @@ public class RepoTest {
     @PersistenceContext
 	EntityManager em;
 
-	// @Inject
-	// Repositorio repo;
+	@Inject
+	Repositorio repo;
 
 	// @Inject
     // ServiceItem servicio;
@@ -90,10 +92,10 @@ public class RepoTest {
 	 * @Inject
 	 * Repositorio repo;
 	 */
-	/*@Test
+	@Test
 	public void test_repositorio_existe() {
 		Assertions.assertThat(repo).isNotNull();
-	}*/
+	}
 
 	/**
 	 * Implementa el metodo loadWizard del repositorio
