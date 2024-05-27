@@ -3,6 +3,7 @@ package edu.badpals.examen;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.core.MediaType;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -105,7 +106,7 @@ public class ResourceTest {
 	 * El servicio utiliza el repositorio
 	 * para hacer la consulta a la base de datos.
      */
-	/*@Test
+	@Test
     public void test_post_item() throws Exception {
 
         // El item se crea si todas sus propiedades son NO nulas ni vacias
@@ -120,7 +121,7 @@ public class ResourceTest {
             .body("name", equalTo("Resurrection Stone"),
                   "quality", equalTo(666),
                   "type", equalTo("MagicalItem"));
-    }*/
+    }
         
     /**
      * Asegurate que el item no se crea 

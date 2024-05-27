@@ -4,6 +4,7 @@ import edu.badpals.examen.domain.MagicalItem;
 import edu.badpals.examen.repository.Repositorio;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 
 import java.util.Optional;
 
@@ -14,6 +15,12 @@ public class ServiceItem {
 
     public Optional<MagicalItem> getItem(String item_name){
         return repo.loadItem(item_name);
+    }
+
+    @Transactional
+    public Optional<MagicalItem> postItem(MagicalItem magicalItem){
+        repo.createItem(magicalItem.getName(),magicalItem.getQuality(),magicalItem.getType());
+        return repo.loadItem(magicalItem);
     }
 
 }
