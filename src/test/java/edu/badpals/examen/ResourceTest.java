@@ -1,9 +1,13 @@
 package edu.badpals.examen;
 
 import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.http.ContentType;
 import jakarta.inject.Inject;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
 public class ResourceTest {
@@ -34,7 +38,7 @@ public class ResourceTest {
      * "CRUD de Items!""
      */
 
-    /*@Test
+    @Test
     public void test_wellcome() {
         given()
             .contentType(ContentType.TEXT)
@@ -43,7 +47,7 @@ public class ResourceTest {
         .then()
             .statusCode(200)
             .body(is("CRUD de Items!"));
-    }*/
+    }
 
     /**
      * La peticion

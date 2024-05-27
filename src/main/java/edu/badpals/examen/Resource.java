@@ -5,6 +5,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.security.Provider;
 
@@ -15,8 +16,10 @@ public class Resource {
     ServiceItem service;
 
     @GET
+    @Path("itemcrudos")
     @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello RESTEasy";
+    public Response hello() {
+        String body = "CRUD de Items!";
+        return Response.status(Response.Status.OK).entity(body).build();
     }
 }
