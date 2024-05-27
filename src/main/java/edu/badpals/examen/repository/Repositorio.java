@@ -93,9 +93,18 @@ public class Repositorio {
         magicalItemRepository.persist(item);
     }
 
+    @Transactional
     public void createItems(List<MagicalItem> items) {
         for(MagicalItem magicalItem : items){
             magicalItemRepository.persist(magicalItem);
+        }
+    }
+
+    @Transactional
+    public void deleteItem(MagicalItem item) {
+        Optional<MagicalItem> optionalMagicalItem = loadItem(item);
+        if(optionalMagicalItem.isPresent()){
+            magicalItemRepository.delete(optionalMagicalItem.get());
         }
     }
 }

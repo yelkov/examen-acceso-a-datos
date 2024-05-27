@@ -291,7 +291,7 @@ public class RepoTest {
      * y no cualquier otro item de la base de datos
      * solo con el mismo nombre.
      */
-	/*@Test
+	@Test
 	@Transactional
 	public void test_delete_item() {
 		Assertions.assertThat(repo).isNotNull();
@@ -306,7 +306,7 @@ public class RepoTest {
 		// Si no existe el item
 		item = new MagicalItem("Varita de Sauco", 1000, "MagicalItem");
 		Assertions.assertThat(repo.loadItem("Varita de Sauco")).isEmpty();
-	}*/
+	}
 
 	/**
 	 * Implementa un servicio, 
