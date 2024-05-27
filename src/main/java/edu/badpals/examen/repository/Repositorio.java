@@ -2,9 +2,11 @@ package edu.badpals.examen.repository;
 
 import com.fasterxml.classmate.Annotations;
 import edu.badpals.examen.domain.MagicalItem;
+import edu.badpals.examen.domain.Order;
 import edu.badpals.examen.domain.Wizard;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import org.locationtech.jts.index.hprtree.Item;
 
 import java.util.ArrayList;
@@ -19,6 +21,9 @@ public class Repositorio {
 
     @Inject
     MagicalItemRepository magicalItemRepository;
+
+    @Inject
+    OrderRepository orderRepository;
 
 
     public Optional<Wizard> loadWizard(String wizard_name) {
@@ -57,4 +62,29 @@ public class Repositorio {
         }
         return filteredList;
     }
+
+    public Optional<Order> loadOrder(String wizard_name, String item_name) {
+        List<Order> orderList = orderRepository.listAll();
+
+        Optional<Order> order = orderList.stream()
+                .filter(o -> o.getWizard().getName().equals(wizard_name))
+                .filter(o-> o.getItem().getName().equals(item_name))
+                .findFirst();
+        return order;
+    }
+
+    /*@Transactional
+    public Optional<Order> placeOrder(String wizard_name, String item_name) {
+        Optional<Wizard> wizard = loadWizard(wizard_name);
+        Optional<MagicalItem> item = loadItem(item_name);
+
+        Optional<Order> order
+        if(wizard.isPresent() && item.isPresent()){
+
+        }
+
+
+    }*/
+
+
 }
