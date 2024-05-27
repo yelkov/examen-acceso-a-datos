@@ -7,6 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.locationtech.jts.index.hprtree.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,5 +45,16 @@ public class Repositorio {
                 .filter(i ->i.getQuality() == item.getQuality())
                 .findFirst();
         return magicalItem;
+    }
+
+    public List<MagicalItem> loadItems(String item_name){
+        List<MagicalItem> allItemList = magicalItemRepository.listAll();
+        List<MagicalItem> filteredList = new ArrayList<>();
+
+        for (MagicalItem magicalItem : allItemList){
+            if (magicalItem.getName().equals(item_name))
+                filteredList.add(magicalItem);
+        }
+        return filteredList;
     }
 }
