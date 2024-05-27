@@ -1,6 +1,7 @@
 package edu.badpals.examen;
 
 import edu.badpals.examen.domain.MagicalItem;
+import edu.badpals.examen.domain.Wizard;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -56,14 +57,14 @@ public class RepoTest {
 	 * a una tabla una propiedad Enum es
 	 * 	@Enumerated(EnumType.STRING)
 	 */
-	/*@Test
+	@Test
 	public void test_mapping_wizard() {
 		Wizard squib = em.find(Wizard.class, "Marius Black");
 		Assertions.assertThat(squib).isNotNull();
 		Assertions.assertThat(squib.toString()).contains("Marius Black");
 		Assertions.assertThat(squib.toString()).contains("15"); //wizard_dexterity
 		Assertions.assertThat(squib.toString()).contains("SQUIB");  //tipo enumerado
-	}*/
+	}
 
 	/**
 	 * Completa la definicion y el mapping
