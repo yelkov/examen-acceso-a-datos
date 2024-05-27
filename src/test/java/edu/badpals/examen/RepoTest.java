@@ -250,7 +250,7 @@ public class RepoTest {
 	 * es el que buscamos.
 	 */
 
-	/*@Test
+	@Test
 	@Transactional
 	public void test_create_items() {
 		Assertions.assertThat(repo).isNotNull();
@@ -276,7 +276,7 @@ public class RepoTest {
 		Assertions.assertThat(manos).isNotNull().isNotEmpty().hasSize(2);
 		Assertions.assertThat(items.get(0)).hasFieldOrPropertyWithValue("name", "Sulfuras, Hand of Ragnaros");
 		Assertions.assertThat(items.get(1)).hasFieldOrPropertyWithValue("quality", -1);
-	}*/
+	}
 
 	/**
      * Implementa el metodo deleteItem() del repositorio

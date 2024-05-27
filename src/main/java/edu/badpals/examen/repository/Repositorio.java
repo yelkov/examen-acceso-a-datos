@@ -92,4 +92,10 @@ public class Repositorio {
         MagicalItem item = new MagicalItem(item_name,quality,type);
         magicalItemRepository.persist(item);
     }
+
+    public void createItems(List<MagicalItem> items) {
+        for(MagicalItem magicalItem : items){
+            magicalItemRepository.persist(magicalItem);
+        }
+    }
 }
