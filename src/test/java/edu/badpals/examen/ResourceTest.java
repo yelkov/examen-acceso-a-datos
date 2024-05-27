@@ -7,6 +7,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 
 @QuarkusTest
@@ -60,7 +61,7 @@ public class ResourceTest {
 	 * El servicio utiliza el repositorio
 	 * para hacer la consulta a la base de datos.
      */
-    /*@Test
+    @Test
     public void test_get_item() throws Exception {
 
         // Si el item existe la respuesta es 200
@@ -81,7 +82,7 @@ public class ResourceTest {
             .get("/item/{name}")
         .then()
             .statusCode(404);
-	}*/
+	}
 
     /**
      * Guarda un item empleando el método POST en la url
