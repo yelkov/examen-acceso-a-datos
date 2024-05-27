@@ -1,6 +1,7 @@
 package edu.badpals.examen;
 
 import edu.badpals.examen.domain.MagicalItem;
+import edu.badpals.examen.domain.Order;
 import edu.badpals.examen.domain.Wizard;
 import io.quarkus.test.junit.QuarkusTest;
 import jakarta.persistence.EntityManager;
@@ -72,13 +73,13 @@ public class RepoTest {
 	 * El id de esta clase ha de seguir una estrategia
 	 * Identity
 	 */
-	/*@Test
+	@Test
 	public void test_mapping_order() {
 		Order pedido = em.find(Order.class, 1L);
 		Assertions.assertThat(pedido).isNotNull();
 		Assertions.assertThat(pedido.toString()).contains("Marius Black"); //ord_wizard
 		Assertions.assertThat(pedido.toString()).containsIgnoringCase("Elixir of the Mongoose"); //ord_item
-	}*/
+	}
 
 	/**
 	 * Crea una clase llamada Repositorio
