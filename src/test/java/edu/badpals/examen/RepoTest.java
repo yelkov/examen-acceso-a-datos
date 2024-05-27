@@ -25,8 +25,8 @@ public class RepoTest {
 	@Inject
 	Repositorio repo;
 
-	// @Inject
-    // ServiceItem servicio;
+	@Inject
+    ServiceItem servicio;
 
     /**
 	 * Tests sobre los mappings
@@ -317,10 +317,10 @@ public class RepoTest {
 	 * @Inject
 	 * ServiceItem servicio;
 	 */
-	/*@Test
+	@Test
 	public void test_servicio_existe() {
 		Assertions.assertThat(servicio).isNotNull();
-	}*/
+	}
 
 	/**
 	 * Recuerda inyectar el repositorio en el servicio
