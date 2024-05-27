@@ -34,4 +34,15 @@ public class Repositorio {
         return magicalItem;
 
     }
+
+    public Optional<MagicalItem> loadItem(MagicalItem item){
+        List<MagicalItem> itemList = magicalItemRepository.listAll();
+
+        Optional<MagicalItem> magicalItem = itemList.stream()
+                .filter(i -> i.getName().equals(item.getName()))
+                .filter(i -> i.getType().equals(item.getType()))
+                .filter(i ->i.getQuality() == item.getQuality())
+                .findFirst();
+        return magicalItem;
+    }
 }
