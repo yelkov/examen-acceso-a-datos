@@ -63,9 +63,9 @@ public class MagicalItem {
     @Override
     public String toString() {
         return "MagicalItem{" +
-                "name='" + name + '\'' +
-                ", quality=" + quality +
-                ", type='" + type + '\'' +
+                "name='" + getName() + '\'' +
+                ", quality=" + getQuality() +
+                ", type='" + getType() + '\'' +
                 '}';
     }
 }

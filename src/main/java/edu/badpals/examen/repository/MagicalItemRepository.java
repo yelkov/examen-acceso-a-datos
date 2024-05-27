@@ -5,5 +5,5 @@ import io.quarkus.hibernate.orm.panache.PanacheRepositoryBase;
 import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class magicalItemRepository implements PanacheRepositoryBase<MagicalItem,Long> {
+public class MagicalItemRepository implements PanacheRepositoryBase<MagicalItem,Long> {
 }
