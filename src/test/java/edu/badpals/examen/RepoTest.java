@@ -8,10 +8,13 @@ import io.quarkus.test.junit.QuarkusTest;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
+import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 @QuarkusTest
 public class RepoTest {
@@ -191,7 +194,7 @@ public class RepoTest {
 	 * Los magos/as mudblood NO pueden comprar un item.
 	 */
 
-	/*@Test
+	@Test
 	@Transactional
 	public void test_pedido() {
  
@@ -216,7 +219,7 @@ public class RepoTest {
 		Assertions.assertThat(pedidos).isNotNull().hasSize(3);
 		Assertions.assertThat(pedidos.get(2).getWizard().getName()).isEqualTo("Marius Black");
 		Assertions.assertThat(pedidos.get(2).getItem().getName()).isEqualToIgnoringCase("Elixir of the Mongoose");
-	}*/
+	}
  
 	/**
 	 * Implementa el metodo createItem() del repositorio

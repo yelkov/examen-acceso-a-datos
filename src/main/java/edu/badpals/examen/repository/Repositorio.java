@@ -3,6 +3,7 @@ package edu.badpals.examen.repository;
 import com.fasterxml.classmate.Annotations;
 import edu.badpals.examen.domain.MagicalItem;
 import edu.badpals.examen.domain.Order;
+import edu.badpals.examen.domain.Person;
 import edu.badpals.examen.domain.Wizard;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -72,19 +73,19 @@ public class Repositorio {
         return order;
     }
 
-   /* @Transactional
+    @Transactional
     public Optional<Order> placeOrder(String wizard_name, String item_name) {
         Optional<Wizard> wizard = loadWizard(wizard_name);
         Optional<MagicalItem> item = loadItem(item_name);
 
-        if(wizard.isPresent() && item.isPresent()){
+        if((wizard.isPresent() && item.isPresent()) && wizard.get().getPerson()!= Person.MUDBLOOD){
                 Order createdOrder = new Order(wizard.get(),item.get());
                 orderRepository.persist(createdOrder);
             }
         return loadOrder(wizard_name,item_name);
 
 
-    }*/
+    }
 
 
 }
