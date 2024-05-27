@@ -87,5 +87,9 @@ public class Repositorio {
 
     }
 
-
+    @Transactional
+    public void createItem(String item_name, int quality, String type) {
+        MagicalItem item = new MagicalItem(item_name,quality,type);
+        magicalItemRepository.persist(item);
+    }
 }
