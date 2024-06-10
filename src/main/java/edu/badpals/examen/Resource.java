@@ -43,8 +43,8 @@ public class Resource {
     public Response post(MagicalItem magicalItem){
         Optional<MagicalItem> item = service.postItem(magicalItem);
         return item.isPresent()?
-                Response.status(201).entity(item).build():
-                Response.status(Response.Status.NOT_FOUND).build();
+                Response.status(Response.Status.CREATED).entity(item).build():
+                Response.status(Response.Status.BAD_REQUEST).build();
     }
 
 

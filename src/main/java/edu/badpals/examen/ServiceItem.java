@@ -19,6 +19,11 @@ public class ServiceItem {
 
     @Transactional
     public Optional<MagicalItem> postItem(MagicalItem magicalItem){
+        if (magicalItem.getName().isEmpty() ||
+                magicalItem.getType().isEmpty() ||
+                magicalItem.getQuality() < 0 ){
+            return Optional.ofNullable(null);
+        }
         repo.createItem(magicalItem.getName(),magicalItem.getQuality(),magicalItem.getType());
         return repo.loadItem(magicalItem);
     }

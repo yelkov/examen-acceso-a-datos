@@ -129,7 +129,7 @@ public class ResourceTest {
      * El controlador devuelve 400 por defecto si 
      * el documento JSON no satisface la validacion.
      */
-    /*@Test
+    @Test
     public void test_post_item_ko() {
 
         given()
@@ -147,7 +147,7 @@ public class ResourceTest {
             .post("/item")
         .then()
             .statusCode(400);
-    }*/
+    }
 
      /**
      * La peticion
