@@ -1,5 +1,6 @@
 package edu.badpals.examen;
 
+import com.fasterxml.jackson.databind.util.NativeImageUtil;
 import edu.badpals.examen.domain.MagicalItem;
 import edu.badpals.examen.repository.Repositorio;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -17,11 +18,19 @@ public class ServiceItem {
         return repo.loadItem(item_name);
     }
 
-    @Transactional
-    public Optional<MagicalItem> postItem(MagicalItem magicalItem){
+    public boolean validateItem(MagicalItem magicalItem){
         if (magicalItem.getName().isEmpty() ||
                 magicalItem.getType().isEmpty() ||
                 magicalItem.getQuality() < 0 ){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    @Transactional
+    public Optional<MagicalItem> postItem(MagicalItem magicalItem){
+        if (!validateItem(magicalItem)){
             return Optional.ofNullable(null);
         }
         repo.createItem(magicalItem.getName(),magicalItem.getQuality(),magicalItem.getType());
