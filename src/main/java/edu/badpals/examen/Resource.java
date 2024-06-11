@@ -7,7 +7,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import javax.print.attribute.standard.Media;
 import java.security.Provider;
+import java.util.List;
 import java.util.Optional;
 
 @Path("/")
@@ -43,9 +45,31 @@ public class Resource {
     public Response post(MagicalItem magicalItem){
         Optional<MagicalItem> item = service.postItem(magicalItem);
         return item.isPresent()?
-                Response.status(201).entity(item).build():
-                Response.status(Response.Status.NOT_FOUND).build();
+                Response.status(Response.Status.CREATED).entity(item).build():
+                Response.status(Response.Status.BAD_REQUEST).build();
     }
 
+    @GET
+    @Path("items/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response get_items(@PathParam("name")String item_name){
+        List<MagicalItem> items = service.getItems(item_name);
+        return items.isEmpty()?
+                Response.status(Response.Status.NOT_FOUND).build():
+                Response.status(Response.Status.OK).entity(items).build();
+    }
+
+    @DELETE
+    @Path("item/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response delete(MagicalItem magicalItem){
+        service.deleteItem(magicalItem);
+        List<MagicalItem> items = service.getItems(magicalItem.getName());
+        return items.isEmpty()?
+                Response.status(Response.Status.NOT_FOUND).build():
+                Response.status(Response.Status.OK).entity(items).build();
+    }
 
 }

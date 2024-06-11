@@ -8,8 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.*;
 
 @QuarkusTest
 public class ResourceTest {
@@ -129,7 +128,7 @@ public class ResourceTest {
      * El controlador devuelve 400 por defecto si 
      * el documento JSON no satisface la validacion.
      */
-    /*@Test
+    @Test
     public void test_post_item_ko() {
 
         given()
@@ -147,7 +146,7 @@ public class ResourceTest {
             .post("/item")
         .then()
             .statusCode(400);
-    }*/
+    }
 
      /**
      * La peticion
@@ -160,7 +159,7 @@ public class ResourceTest {
 	 * El servicio utiliza el repositorio
 	 * para hacer la consulta a la base de datos.
      */
-    /*@Test
+    @Test
     public void test_get_items() throws Exception {
 
         // Si el item existe la respuesta es 200
@@ -183,7 +182,7 @@ public class ResourceTest {
             .get("/items/{name}")
         .then()
             .statusCode(404);
-	}*/
+	}
 
     /**
      * Elimina un item empleando el método DELETE en la url
@@ -206,7 +205,7 @@ public class ResourceTest {
 	 * para hacer la consulta a la base de datos.
      */
     
-    /*@Test
+    @Test
     public void test_delete_item() {
         
         given()
@@ -217,6 +216,6 @@ public class ResourceTest {
         .then()
             .statusCode(200)
             .body("$.size()", is(2));
-    } */
+    }
     
 }
