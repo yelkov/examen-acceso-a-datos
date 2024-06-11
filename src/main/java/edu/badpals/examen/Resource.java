@@ -7,7 +7,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import javax.print.attribute.standard.Media;
 import java.security.Provider;
+import java.util.List;
 import java.util.Optional;
 
 @Path("/")
@@ -45,6 +47,16 @@ public class Resource {
         return item.isPresent()?
                 Response.status(Response.Status.CREATED).entity(item).build():
                 Response.status(Response.Status.BAD_REQUEST).build();
+    }
+
+    @GET
+    @Path("items/{name}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response get_items(@PathParam("name")String item_name){
+        List<MagicalItem> items = service.getItems(item_name);
+        return items.isEmpty()?
+                Response.status(Response.Status.NOT_FOUND).build():
+                Response.status(Response.Status.OK).entity(items).build();
     }
 
 
