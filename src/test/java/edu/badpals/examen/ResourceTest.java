@@ -205,7 +205,7 @@ public class ResourceTest {
 	 * para hacer la consulta a la base de datos.
      */
     
-    /*@Test
+    @Test
     public void test_delete_item() {
         
         given()
@@ -216,6 +216,6 @@ public class ResourceTest {
         .then()
             .statusCode(200)
             .body("$.size()", is(2));
-    } */
+    }
     
 }

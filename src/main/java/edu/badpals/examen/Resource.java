@@ -59,5 +59,17 @@ public class Resource {
                 Response.status(Response.Status.OK).entity(items).build();
     }
 
+    @DELETE
+    @Path("item/")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Response delete(MagicalItem magicalItem){
+        service.deleteItem(magicalItem);
+        List<MagicalItem> items = service.getItems(magicalItem.getName());
+        return items.isEmpty()?
+                Response.status(Response.Status.NOT_FOUND).build():
+                Response.status(Response.Status.OK).entity(items).build();
+    }
 
 }

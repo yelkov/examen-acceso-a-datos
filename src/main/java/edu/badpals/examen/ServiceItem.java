@@ -42,4 +42,9 @@ public class ServiceItem {
         return repo.loadItem(magicalItem);
     }
 
+    @Transactional
+    public void deleteItem(MagicalItem magicalItem){
+        repo.deleteItem(magicalItem);
+    }
+
 }
